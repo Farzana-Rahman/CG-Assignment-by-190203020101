@@ -1,1 +1,50 @@
+#include<stdio.h>
+#include<graphics.h>
+#include<conio.h>
+
+
+int main(){
+
+    int gd=DETECT,gm;
+    int x,y,xc,yc,r,p;
+
+    printf("Enter the center of the circle: ");
+    scanf("%d%d",&xc,&yc);
+
+    printf("Enter the radius of the circle:");
+    scanf("%d",&r);
+    initgraph(&gd,&gm,(char*)"");
+
+    p=3-2*r;
+    x=0;
+    y=r;
+
+    while(x<=y){
+    putpixel(x+xc,y+yc,GREEN);
+    putpixel(x+xc,-y+yc,GREEN);
+    putpixel(-x+xc,-y+yc,GREEN);
+    putpixel(-x+xc,y+yc,GREEN);
+    putpixel(y+xc,x+yc,GREEN);
+    putpixel(y+xc,-x+yc,GREEN);
+    putpixel(-y+xc,-x+yc,GREEN);
+    putpixel(-y+xc,x+yc,GREEN);
+
+    if(p<=0){
+
+        x=x+1;
+        p=p+4 * x+6;
+
+    }
+    else{
+
+        x=x+1;
+        y=y-1;
+        p=p+4*(x-y)+10;
+    }
+    }
+
+    getch();
+    closegraph();
+    return 0;
+}
 
